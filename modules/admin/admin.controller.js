@@ -3,7 +3,10 @@ const config = require("config");
 class Verification {
   constructor() {}
   validation(payload) {
-    if (payload.username === "as" && payload.password === "as") {
+    if (
+      payload.username === "prithvi.maharjan@rumsan.com" &&
+      payload.password === "Apple123"
+    ) {
       let user = {};
       user.name = payload.username;
       user.token = config.get("app.access_token");
