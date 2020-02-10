@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/adminform/images/icons/favicon.ico"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/animate/animate.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminform/vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/adminform/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="/adminform/css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form
+          class="contact100-form validate-form"
+          id="loginform"
+          method="POST"
+          onsubmit="process_login(this);return false;"
+        >
+          <span class="contact100-form-title">
+            Admin Log-in
+          </span>
+
+          <div
+            class="wrap-input100 validate-input"
+            data-validate="Name is required"
+          >
+            <span class="label-input100">Username</span>
+            <input
+              class="input100"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter the Username"
+            />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div
+            class="wrap-input100 validate-input"
+            data-validate="Valid email is required: ex@abc.xyz"
+          >
+            <span class="label-input100">Password</span>
+            <input
+              class="input100"
+              type="text"
+              name="password"
+              id="password"
+              placeholder="Enter the Password"
+            />
+            <span class="focus-input100"></span>
+          </div>
+          <div id="msg" class="alert alert-danger row ml-3 mr-3"></div>
+          <div id="info" class="alert alert-success row ml-3 mr-3"></div>
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+              <div class="contact100-form-bgbtn"></div>
+
+              <button class="contact100-form-btn" type="submit">
+                <span>
+                  Submit
+                  <i
+                    class="fa fa-long-arrow-right m-l-7"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/bootstrap/js/popper.js"></script>
+    <script src="/adminform/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/select2/select2.min.js"></script>
+    <script>
+      $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $("#dropDownSelect1")
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/adminform/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/adminform/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+
+    <script>
+      $(document).ready(function() {
+        $("#msg").hide();
+        $("#info").hide();
+      });
+      var process_login = form => {
+        $("#info").hide();
+        let username = $("input[name='username']").val();
+        let password = $("input[name='password']").val();
+
+        $.ajax({
+          url: "/login",
+          method: "POST",
+          data: { username, password }
+        })
+          .done(function(data) {
+            if (data.token) {
+              window.location.replace("/admin");
+            }
+          })
+          .fail(function(err) {
+            $("#msg").html(err.responseJSON.message);
+            $("#msg").show();
+          });
+        return false;
+      };
+    </script>
+  </body>
+</html>

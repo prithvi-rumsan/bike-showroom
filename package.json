@@ -1,0 +1,19 @@
+{
+  "name": "bike-showroom-by-prithvi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon ./bin/www",
+    "production": "NODE_ENV=production yarn install"
+  },
+  "dependencies": {
+    "config": "^3.2.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "handlebars": "^4.0.12",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.2.9"
+  }
+}
