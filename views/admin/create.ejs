@@ -56,11 +56,44 @@
     <link rel="stylesheet" type="text/css" href="/adminform/css/util.css" />
     <link rel="stylesheet" type="text/css" href="/adminform/css/main.css" />
     <!--===============================================================================================-->
+    <style type="text/css">
+      .topcorner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 25px;
+      }
+    </style>
+    <style type="text/css">
+      .topleft {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-left: 25px;
+      }
+    </style>
   </head>
   <body>
     <div class="container-contact100">
+      <div class="topleft">
+        <a href="/"
+          ><i class="fa fa-home" style="font-size:30px;color:red"></i>&nbsp;
+          <span style="font-size: 16px; color:black">Homepage</span>
+        </a>
+      </div>
+      <div class="topcorner" style="vertical-align: middle;">
+        <a href="/logout"
+          ><i class="fa fa-sign-out" style="font-size:30px;color:red"></i>&nbsp;
+          <span style="font-size: 16px; color:black">Logout</span>
+        </a>
+      </div>
       <div class="wrap-contact100">
-        <form class="contact100-form validate-form">
+        <form
+          class="contact100-form validate-form"
+          id="createform"
+          method="POST"
+          onsubmit="create(this)"
+        >
           <span class="contact100-form-title">
             Register A Bike
           </span>
@@ -75,6 +108,7 @@
               type="text"
               name="name"
               placeholder="Enter the bike name"
+              required
             />
             <span class="focus-input100"></span>
           </div>
@@ -87,8 +121,9 @@
             <input
               class="input100"
               type="text"
-              name="name"
+              name="brand"
               placeholder="Enter the bike brand"
+              required
             />
             <span class="focus-input100"></span>
           </div>
@@ -100,9 +135,10 @@
             <span class="label-input100">Engine Capacity</span>
             <input
               class="input100"
-              type="text"
-              name="email"
+              type="number"
+              name="engine"
               placeholder="Enter the engine capacity"
+              required
             />
             <span class="focus-input100"></span>
           </div>
@@ -115,8 +151,9 @@
             <input
               class="input100"
               type="text"
-              name="email"
+              name="color"
               placeholder="Enter the bike color"
+              required
             />
             <span class="focus-input100"></span>
           </div>
@@ -128,8 +165,8 @@
             <span class="label-input100">Price</span>
             <input
               class="input100"
-              type="text"
-              name="email"
+              type="number"
+              name="price"
               placeholder="Enter the price of the bike"
             />
             <span class="focus-input100"></span>
@@ -138,7 +175,7 @@
           <div class="wrap-input100 input100-select">
             <span class="label-input100">Category</span>
             <div>
-              <select class="selection-2" name="service">
+              <select class="selection-2" name="category">
                 <option>Sports</option>
                 <option>Naked Sports</option>
                 <option>Scooter</option>
@@ -151,30 +188,17 @@
 
           <div
             class="wrap-input100 validate-input"
-            data-validate="Valid email is required: ex@abc.xyz"
+            data-validate="Image URL is required"
           >
             <span class="label-input100">Image URL</span>
             <input
               class="input100"
-              type="text"
-              name="email"
+              type="url"
+              name="image_url"
               placeholder="Enter The Image URL"
             />
             <span class="focus-input100"></span>
           </div>
-
-          <!--<div class="wrap-input100 input100-select">
-					<span class="label-input100">Budget</span>
-					<div>
-						<select class="selection-2" name="budget">
-							<option>Select Budget</option>
-							<option>1500 $</option>
-							<option>2000 $</option>
-							<option>2500 $</option>
-						</select>
-					</div>
-					<span class="focus-input100"></span>
-				</div>-->
 
           <div
             class="wrap-input100 validate-input"
@@ -183,7 +207,7 @@
             <span class="label-input100">Details</span>
             <textarea
               class="input100"
-              name="message"
+              name="details"
               placeholder="Enter specs, other details..."
             ></textarea>
             <span class="focus-input100"></span>
@@ -192,7 +216,7 @@
           <div class="container-contact100-form-btn">
             <div class="wrap-contact100-form-btn">
               <div class="contact100-form-bgbtn"></div>
-              <button class="contact100-form-btn">
+              <button class="contact100-form-btn" type="submit">
                 <span>
                   Submit
                   <i
@@ -231,5 +255,8 @@
     <script src="/adminform/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="/adminform/js/main.js"></script>
+    <script>
+      var create = data => console.log(data, "hello");
+    </script>
   </body>
 </html>

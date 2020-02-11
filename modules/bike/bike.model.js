@@ -4,13 +4,13 @@ const Schema = mongoose.Schema(
   {
     name: { type: String, required: true },
     color: { type: String, required: true },
-    engine: { type: String, required: true },
+    engine: { type: Number, required: true },
     brand: { type: String, required: true },
     category: { type: String, required: true },
     image_url: { type: String },
     details: String,
-    year: String,
-    price: String
+    year: Number,
+    price: Number
   },
   {
     collection: "bikes",

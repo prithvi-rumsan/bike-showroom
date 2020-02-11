@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const BikeAPI = require("./bike.routes.api");
+
 //list all the bikes in the inventory
 router.get("/", async (req, res, next) => {
   res.render("bike/index");

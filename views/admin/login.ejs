@@ -56,9 +56,23 @@
     <link rel="stylesheet" type="text/css" href="/adminform/css/util.css" />
     <link rel="stylesheet" type="text/css" href="/adminform/css/main.css" />
     <!--===============================================================================================-->
+    <style type="text/css">
+      .topleft {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-left: 25px;
+      }
+    </style>
   </head>
   <body>
     <div class="container-contact100">
+      <div class="topleft">
+        <a href="/"
+          ><i class="fa fa-home" style="font-size:30px;color:red"></i>&nbsp;
+          <span style="font-size: 16px; color:black">Homepage</span>
+        </a>
+      </div>
       <div class="wrap-contact100">
         <form
           class="contact100-form validate-form"
@@ -92,7 +106,7 @@
             <span class="label-input100">Password</span>
             <input
               class="input100"
-              type="text"
+              type="password"
               name="password"
               id="password"
               placeholder="Enter the Password"

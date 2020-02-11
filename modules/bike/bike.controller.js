@@ -25,7 +25,18 @@ class BikeController {
   updateById(id, payload) {
     return BikeModel.findByIdAndUpdate(
       { _id: id },
-      { $set: { name: payload.name, engine: payload.engine } }
+      {
+        $set: {
+          name: payload.name,
+          engine: payload.engine,
+          color: payload.color,
+          brand: payload.brand,
+          price: payload.price,
+          category: payload.category,
+          image_url: payload.image_url,
+          details: payload.details
+        }
+      }
     );
   }
 
